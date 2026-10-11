@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SNK Consulting | Real Estate Consulting</title>
+  <meta name="description" content="SNK Consulting – real estate consulting door Menno van Veenendaal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-900: #0a1628;
+      --navy-800: #0f1f3a;
+      --navy-700: #16294b;
+      --gold: #c9a24b;
+      --gold-light: #e4c77e;
+      --ivory: #f5f1e6;
+      --muted: #a9b4c7;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Inter", system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy-900);
+      color: var(--ivory);
+      font-family: var(--sans);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(1180px, 100% - 32px); margin-inline: auto; }
+
+    /* Navigatie */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201, 162, 75, 0.2);
+    }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 76px;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.7rem; font-weight: 700; letter-spacing: 0.08em;
+      color: var(--gold);
+    }
+    .logo span { color: var(--ivory); font-weight: 500; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .nav-links a { color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    /* Hero */
+    .hero {
+      background:
+        radial-gradient(ellipse at top right, rgba(201,162,75,0.12), transparent 55%),
+        linear-gradient(180deg, var(--navy-900), var(--navy-800));
+      padding: 5rem 0 6rem;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 4rem; align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .75rem;
+      color: var(--gold); font-size: .8rem; letter-spacing: .25em; text-transform: uppercase; font-weight: 500;
+    }
+    .eyebrow::before { content: ""; width: 40px; height: 1px; background: var(--gold); }
+    h1 {
+      font-family: var(--serif); font-weight: 600;
+      font-size: clamp(2.6rem, 5.5vw, 4.4rem); line-height: 1.08;
+      margin: 1.25rem 0 1.5rem;
+    }
+    h1 em { font-style: italic; color: var(--gold); }
+    .lead { color: var(--muted); font-size: 1.1rem; max-width: 34rem; }
+    .lead strong { color: var(--ivory); font-weight: 500; }
+    .signature {
+      margin-top: 2rem; font-family: var(--serif); font-size: 1.6rem; font-style: italic; color: var(--gold-light);
+    }
+    .signature small {
+      display: block; font-family: var(--sans); font-style: normal; font-size: .78rem;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: .2rem;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
+    .btn {
+      display: inline-block; padding: .95rem 2rem; font-size: .82rem; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase; border: 1px solid var(--gold); transition: all .25s;
+    }
+    .btn-primary { background: var(--gold); color: var(--navy-900); }
+    .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-ghost { color: var(--gold); }
+    .btn-ghost:hover { background: rgba(201,162,75,0.1); }
+
+    /* Foto */
+    .photo {
+      position: relative; margin: 0;
+    }
+    .photo::before {
+      content: ""; position: absolute; inset: -18px 18px 18px -18px;
+      border: 1px solid var(--gold); z-index: 0;
+    }
+    .photo-frame {
+      position: relative; z-index: 1; aspect-ratio: 4 / 5; overflow: hidden;
+      background: linear-gradient(160deg, var(--navy-700), #1c1c1c);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    }
+    .photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+      filter: grayscale(100%) contrast(1.12) brightness(0.95);
+      transition: transform 1.2s ease;
+    }
+    .photo:hover img { transform: scale(1.04); }
+    .photo figcaption {
+      position: relative; z-index: 1; margin-top: 1rem;
+      font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+    }
+    .photo figcaption b { color: var(--gold); font-weight: 500; }
+
+    /* Over / diensten */
+    section.block { padding: 6rem 0; }
+    .section-head { text-align: center; max-width: 44rem; margin: 0 auto 3.5rem; }
+    .section-head .eyebrow::after { content: ""; width: 40px; height: 1px; background: var(--gold); }
+    h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin: 1rem 0; }
+    .section-head p { color: var(--muted); }
+
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .card {
+      background: var(--navy-800); border: 1px solid rgba(201,162,75,0.18);
+      padding: 2.5rem 2rem; transition: border-color .25s, transform .25s;
+    }
+    .card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .card .num { font-family: var(--serif); font-size: 2.4rem; color: var(--gold); line-height: 1; }
+    .card h3 { font-family: var(--serif); font-size: 1.55rem; font-weight: 600; margin: 1rem 0 .6rem; }
+    .card p { color: var(--muted); font-size: .95rem; }
+
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: .5; }
+
+    /* Contact */
+    .contact { background: var(--navy-800); text-align: center; }
+    .contact p { color: var(--muted); max-width: 36rem; margin: 0 auto 2rem; }
+
+    footer {
+      padding: 2rem 0; border-top: 1px solid rgba(201,162,75,0.2);
+      font-size: .8rem; color: var(--muted);
+    }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    footer a { color: var(--gold); }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 4rem; }
+      .photo { max-width: 480px; margin-inline: auto 18px; }
+      .services { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="container">
+      <a href="#" class="logo">SNK <span>Consulting</span></a>
+      <ul class="nav-links">
+        <li><a href="#over">Over</a></li>
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Real Estate Consulting</span>
+          <h1>Welkom bij <em>SNK&nbsp;Consulting</em></h1>
+          <p class="lead">
+            Hallo, ik ben <strong>Menno van Veenendaal</strong>. Fijn dat u er bent.
+            Met SNK Consulting help ik investeerders, eigenaren en ondernemers bij
+            het nemen van weloverwogen beslissingen in vastgoed: van de eerste analyse
+            tot de laatste handtekening.
+          </p>
+          <p class="signature">
+            Menno van Veenendaal
+            <small>Oprichter &amp; Real Estate Consultant</small>
+          </p>
+          <div class="actions">
+            <a href="#contact" class="btn btn-primary">Plan een gesprek</a>
+            <a href="#diensten" class="btn btn-ghost">Onze diensten</a>
+          </div>
+        </div>
+
+        <figure class="photo">
+          <div class="photo-frame">
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Chrysler_Building_by_David_Shankbone_Retouched.jpg?width=1200"
+              alt="De Chrysler Building in Manhattan, New York, in zwart-wit"
+              loading="eager">
+          </div>
+          <figcaption><b>Chrysler Building</b> &middot; Manhattan, New York</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="block" id="over">
+      <div class="container section-head">
+        <span class="eyebrow">Over SNK Consulting</span>
+        <h2>Vastgoedadvies met visie en vakmanschap</h2>
+        <p>
+          SNK Consulting is een real estate consultancybureau dat zich richt op heldere,
+          onafhankelijke adviezen. Net als de iconische Chrysler Building draait goed vastgoed
+          om een sterk fundament, een doordacht ontwerp en waarde die de tijd doorstaat.
+          Daar help ik u bij.
+        </p>
+      </div>
+
+      <div class="container services" id="diensten">
+        <article class="card">
+          <div class="num">01</div>
+          <h3>Acquisitie &amp; Due Diligence</h3>
+          <p>Grondige analyse van objecten en markten, zodat u met vertrouwen kunt aankopen.</p>
+        </article>
+        <article class="card">
+          <div class="num">02</div>
+          <h3>Waardering &amp; Strategie</h3>
+          <p>Inzicht in de waarde en het potentieel van uw portefeuille, met een duidelijke strategie.</p>
+        </article>
+        <article class="card">
+          <div class="num">03</div>
+          <h3>Asset Management</h3>
+          <p>Optimalisatie van rendement en waarde op de lange termijn, afgestemd op uw doelen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block contact" id="contact">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h2>Laten we kennismaken</h2>
+        <p>Benieuwd wat SNK Consulting voor u kan betekenen? Neem gerust contact op voor een vrijblijvend gesprek.</p>
+        <a href="mailto:info@snkconsulting.nl" class="btn btn-primary">Neem contact op</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>&copy; <span id="year">2026</span> SNK Consulting &middot; Menno van Veenendaal</span>
+      <span>Foto: <a href="https://commons.wikimedia.org/wiki/File:Chrysler_Building_by_David_Shankbone_Retouched.jpg" target="_blank" rel="noopener">David Shankbone, Wikimedia Commons</a> (CC BY-SA 3.0)</span>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
